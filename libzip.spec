@@ -13,7 +13,6 @@ BuildRequires:	libtool
 BuildRequires:	automake1.7
 BuildRequires:	autoconf2.5
 BuildRequires:	zlib-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 libzip is a C library for reading, creating, and modifying zip archives. Files
