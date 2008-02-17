@@ -4,7 +4,7 @@
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
 Version:	0.8
-Release:	%mkrel 2
+Release:	%mkrel 3
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.nih.at/libzip/
@@ -13,7 +13,7 @@ BuildRequires:	libtool
 BuildRequires:	automake1.7
 BuildRequires:	autoconf2.5
 BuildRequires:	zlib-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 libzip is a C library for reading, creating, and modifying zip archives. Files
