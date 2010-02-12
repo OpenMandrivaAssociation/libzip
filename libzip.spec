@@ -3,8 +3,8 @@
 
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
-Version:	0.9
-Release:	%mkrel 3
+Version:	0.9.3
+Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.nih.at/libzip/
@@ -92,13 +92,12 @@ rm -rf %{buildroot}
 %files -n %{libname}
 %defattr(-,root,root)
 %doc AUTHORS NEWS README THANKS TODO
-%{_libdir}/*.so.*
+%{_libdir}/lib*.so.%{major}*
 
 %files -n %{libname}-devel
 %defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/*.a
-%{_libdir}/*.la
+%{_libdir}/*.*a
 %{_libdir}/pkgconfig/libzip.pc
 %{_mandir}/man3/*
