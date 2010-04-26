@@ -1,17 +1,16 @@
 %define	major 1
 %define libname	%mklibname zip %{major}
+%define develname %mklibname zip -d
 
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
 Version:	0.9.3
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.nih.at/libzip/
 Source0:	http://www.nih.at/libzip/%{name}-%{version}.tar.gz
 BuildRequires:	libtool
-BuildRequires:	automake1.7
-BuildRequires:	autoconf2.5
 BuildRequires:	zlib-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -31,15 +30,16 @@ can be added from data buffers, files, or compressed data copied directly from
 other zip archives. Changes made without closing the archive can be reverted.
 The API is documented by man pages.
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	Static library and header files for the %{name} library
 Group:		Development/C
 Requires:	%{name} = %{version}
 Requires:	%{libname} = %{version}
 Provides:	%{name}-devel = %{version}
-Obsoletes:	%{mklibname zip 0}-devel
+Provides:	lib%{name}-devel = %{version}
+Obsoletes:	%{mklibname zip 1}-devel
 
-%description -n	%{libname}-devel
+%description -n	%{develname}
 libzip is a C library for reading, creating, and modifying zip archives. Files
 can be added from data buffers, files, or compressed data copied directly from
 other zip archives. Changes made without closing the archive can be reverted.
@@ -52,9 +52,9 @@ This package contains the static %{name} library and its header files.
 %setup -q -n %{name}-%{version}
 
 %build
-export WANT_AUTOCONF_2_5=1
-rm -f configure
-libtoolize --copy --force; aclocal-1.7; autoconf --force; autoheader; automake-1.7 --foreign
+#export WANT_AUTOCONF_2_5=1
+#rm -f configure
+#libtoolize --copy --force; aclocal-1.7; autoconf --force; autoheader; automake-1.7 --foreign
 
 %configure2_5x
 
@@ -94,7 +94,7 @@ rm -rf %{buildroot}
 %doc AUTHORS NEWS README THANKS TODO
 %{_libdir}/lib*.so.%{major}*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/*.so
