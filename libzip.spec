@@ -1,4 +1,4 @@
-%define	major 1
+%define	major 2
 %define libname	%mklibname zip %{major}
 %define develname %mklibname zip -d
 
@@ -97,6 +97,10 @@ rm -rf %{buildroot}
 %files -n %{develname}
 %defattr(-,root,root)
 %{_includedir}/*
+# fugly
+%dir %{_libdir}/libzip
+%dir %{_libdir}/libzip/include
+%{_libdir}/libzip/include/zipconf.h
 %{_libdir}/*.so
 %{_libdir}/*.*a
 %{_libdir}/pkgconfig/libzip.pc
