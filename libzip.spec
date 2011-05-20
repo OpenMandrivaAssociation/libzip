@@ -5,11 +5,12 @@
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
 Version:	0.10
-Release:	%mkrel 2
+Release:	%mkrel 3
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.nih.at/libzip/
 Source0:	http://www.nih.at/libzip/%{name}-%{version}.tar.gz
+Patch0:		libzip-include.diff
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -50,6 +51,7 @@ This package contains the static %{name} library and its header files.
 %prep
 
 %setup -q -n %{name}-%{version}
+%patch0 -p0 -b .include
 
 %build
 #export WANT_AUTOCONF_2_5=1
@@ -66,7 +68,7 @@ This package contains the static %{name} library and its header files.
 %install
 rm -rf %{buildroot}
 
-%makeinstall_std
+INSTALL_HEADER=%{_includedir} %makeinstall_std
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
@@ -98,9 +100,6 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_includedir}/*
 # fugly
-%dir %{_libdir}/libzip
-%dir %{_libdir}/libzip/include
-%{_libdir}/libzip/include/zipconf.h
 %{_libdir}/*.so
 %{_libdir}/*.*a
 %{_libdir}/pkgconfig/libzip.pc
