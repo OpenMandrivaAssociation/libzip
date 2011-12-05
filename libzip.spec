@@ -5,15 +5,14 @@
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
 Version:	0.10
-Release:	%mkrel 3
+Release:	4
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.nih.at/libzip/
 Source0:	http://www.nih.at/libzip/%{name}-%{version}.tar.gz
 Patch0:		libzip-include.diff
-BuildRequires:	libtool
+BuildRequires:	autoconf automake libtool
 BuildRequires:	zlib-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 libzip is a C library for reading, creating, and modifying zip archives. Files
@@ -34,7 +33,7 @@ The API is documented by man pages.
 %package -n	%{develname}
 Summary:	Static library and header files for the %{name} library
 Group:		Development/C
-Requires:	%{name} = %{version}
+Requires:	%{name} >= %{version}-%{release}
 Requires:	%{libname} = %{version}
 Provides:	%{name}-devel = %{version}
 Provides:	lib%{name}-devel = %{version}
@@ -70,19 +69,10 @@ rm -rf %{buildroot}
 
 INSTALL_HEADER=%{_includedir} %makeinstall_std
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-rm -rf %{buildroot}
+# cleanup
+rm -f %{buildroot}%{_libdir}/*.*a
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS NEWS README THANKS TODO
 %{_bindir}/zipcmp
 %{_bindir}/zipmerge
@@ -92,15 +82,11 @@ rm -rf %{buildroot}
 %{_mandir}/man1/ziptorrent.1*
 
 %files -n %{libname}
-%defattr(-,root,root)
 %doc AUTHORS NEWS README THANKS TODO
 %{_libdir}/lib*.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %{_includedir}/*
-# fugly
 %{_libdir}/*.so
-%{_libdir}/*.*a
 %{_libdir}/pkgconfig/libzip.pc
 %{_mandir}/man3/*
