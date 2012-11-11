@@ -1,0 +1,11 @@
+--- lib/Makefile.in	2011-03-18 13:51:26.000000000 +0100
++++ lib/Makefile.in.dlucio	2011-05-20 19:10:52.000000000 +0200
+@@ -237,7 +237,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-libincludedir = ${libdir}/@PACKAGE@/include
++libincludedir = @includedir@
+ lib_LTLIBRARIES = libzip.la
+ noinst_HEADERS = zipint.h
+ include_HEADERS = zip.h
