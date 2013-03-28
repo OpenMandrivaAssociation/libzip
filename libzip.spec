@@ -14,7 +14,6 @@ Patch0:		libzip-include.diff
 Patch1:		libzip-0.10-php.patch
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 libzip is a C library for reading, creating, and modifying zip archives. Files
@@ -59,7 +58,7 @@ This package contains the static %{name} library and its header files.
 #export WANT_AUTOCONF_2_5=1
 #rm -f configure
 #libtoolize --copy --force; aclocal-1.7; autoconf --force; autoheader; automake-1.7 --foreign
-
+autoreconf -fi
 %configure2_5x
 
 %make
@@ -68,23 +67,10 @@ This package contains the static %{name} library and its header files.
 #make check <- fails at "FAIL: open_nonarchive.test"
 
 %install
-rm -rf %{buildroot}
 
 INSTALL_HEADER=%{_includedir} %makeinstall_std
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc AUTHORS NEWS README THANKS TODO
 %{_bindir}/zipcmp
 %{_bindir}/zipmerge
@@ -94,13 +80,12 @@ rm -rf %{buildroot}
 %{_mandir}/man1/ziptorrent.1*
 
 %files -n %{libname}
-%defattr(-,root,root)
 %doc AUTHORS NEWS README THANKS TODO
 %{_libdir}/lib*.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %{_includedir}/*
+%{_libdir}/%{name}/include/zipconf.h
 # fugly
 %{_libdir}/*.so
 %{_libdir}/*.*a
