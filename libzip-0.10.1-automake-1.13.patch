@@ -1,0 +1,13 @@
+diff -up libzip-0.10.1/regress/Makefile.am.automake-1_13 libzip-0.10.1/regress/Makefile.am
+--- libzip-0.10.1/regress/Makefile.am.automake-1_13	2012-03-15 10:28:05.000000000 +0100
++++ libzip-0.10.1/regress/Makefile.am	2013-01-12 20:54:23.044042632 +0100
+@@ -36,7 +36,8 @@ EXTRA_DIST= \
+ 	teststored.zip \
+ 	testtorrent.tzip
+ 
+-TESTS_ENVIRONMENT=	ZIPCMP=${top_builddir}/src/zipcmp ${srcdir}/runtest
++TESTS_ENVIRONMENT=	ZIPCMP=${top_builddir}/src/zipcmp
++TEST_LOG_COMPILE=	${srcdir}/runtest
+ 
+ TESTS= \
+ 	add_dir.test \

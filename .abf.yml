@@ -1,4 +1,5 @@
 removed_sources:
   libzip-0.10.1.tar.gz: 8e55cef976bc6b4232dee03847dfe89366e01b3c
-sources:
   libzip-0.11.1.tar.gz: 729a141fd3b47f34a94e8fd8a9ee1b25f0c8e922
+sources:
+  libzip-0.10.1.tar.gz: 8e55cef976bc6b4232dee03847dfe89366e01b3c
