@@ -1,15 +1,15 @@
-%define	major	2
-%define libname	%mklibname zip %{major}
+%define	major 2
+%define libname %mklibname zip %{major}
 %define devname %mklibname zip -d
 
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
-Version:	0.10.1
-Release:	9
+Version:	0.11.2
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		http://www.nih.at/libzip/
-Source0:	http://www.nih.at/libzip/%{name}-%{version}.tar.gz
+Source0:	http://www.nih.at/libzip/%{name}-%{version}.tar.xz
 Patch0:		libzip-0.10-fix_pkgconfig.patch
 Patch1:		libzip-0.10_rc1-fix_headers.patch
 Patch2:		libzip-0.10-php.patch
@@ -51,7 +51,7 @@ This package contains the development files for %{name}.
 autoreconf -fi
 
 %build
-%configure2_5x --disable-static
+%configure
 
 %make
 
