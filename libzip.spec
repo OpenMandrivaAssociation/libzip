@@ -13,8 +13,6 @@ Source0:	http://www.nih.at/libzip/%{name}-%{version}.tar.xz
 Patch0:		libzip-0.10-fix_pkgconfig.patch
 Patch1:		libzip-0.10_rc1-fix_headers.patch
 Patch2:		libzip-0.10-php.patch
-Patch3:		libzip-0.10.1-long-crc.patch
-Patch4:		libzip-0.10.1-automake-1.13.patch
 BuildRequires:	libtool
 BuildRequires:	libtool
 BuildRequires:	pkgconfig(zlib)

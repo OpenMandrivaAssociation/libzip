@@ -1,13 +1,13 @@
-diff --git a/lib/Makefile.am b/lib/Makefile.am
-index 921a328..b8c25ce 100644
---- a/lib/Makefile.am
-+++ b/lib/Makefile.am
-@@ -2,8 +2,7 @@ libincludedir = ${libdir}/@PACKAGE@/include
+--- libzip-0.11.2/lib/Makefile.am.0001~	2014-06-28 22:43:27.657222232 +0200
++++ libzip-0.11.2/lib/Makefile.am	2014-06-28 22:43:55.585873076 +0200
+@@ -1,10 +1,8 @@
+ AM_CFLAGS=	@CFLAG_VISIBILITY@
+-libincludedir = ${libdir}/@PACKAGE@/include
  
  lib_LTLIBRARIES = libzip.la
  noinst_HEADERS = zipint.h
 -include_HEADERS = zip.h
--libinclude_HEADERS = zipconf.h
+-nodist_libinclude_HEADERS = zipconf.h
 +include_HEADERS = zip.h zipconf.h
  
  # also update CMakeLists.txt when changing version
