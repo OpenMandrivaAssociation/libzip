@@ -5,7 +5,7 @@
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
 Version:	0.11.2
-Release:	4
+Release:	5
 Group:		System/Libraries
 License:	BSD
 Url:		http://www.nih.at/libzip/
@@ -13,7 +13,6 @@ Source0:	http://www.nih.at/libzip/%{name}-%{version}.tar.xz
 Patch0:		libzip-0.10-fix_pkgconfig.patch
 Patch1:		libzip-0.10_rc1-fix_headers.patch
 Patch2:		libzip-0.10-php.patch
-BuildRequires:	libtool
 BuildRequires:	libtool
 BuildRequires:	pkgconfig(zlib)
 
@@ -49,8 +48,8 @@ This package contains the development files for %{name}.
 autoreconf -fi
 
 %build
+%global optflags %{optflags} -Ofast
 %configure
-
 %make
 
 %install
