@@ -1,18 +1,19 @@
-%define	major 2
+%define	major 4
 %define libname %mklibname zip %{major}
 %define devname %mklibname zip -d
 
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
-Version:	0.11.2
-Release:	8
+Version:	1.1.3
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		http://www.nih.at/libzip/
 Source0:	http://www.nih.at/libzip/%{name}-%{version}.tar.xz
-Patch0:		libzip-0.10-fix_pkgconfig.patch
-Patch1:		libzip-0.10_rc1-fix_headers.patch
-Patch2:		libzip-0.10-php.patch
+#Patch0:		libzip-0.10-fix_pkgconfig.patch
+Patch0:		libzip-1.1.3-headers.patch
+#Patch1:		libzip-0.10_rc1-fix_headers.patch
+#Patch2:		libzip-0.10-php.patch
 BuildRequires:	libtool
 BuildRequires:	pkgconfig(zlib)
 
@@ -56,19 +57,18 @@ autoreconf -fi
 INSTALL_HEADER=%{_includedir} %makeinstall_std
 
 %files
-%doc AUTHORS NEWS README THANKS TODO
 %{_bindir}/zipcmp
 %{_bindir}/zipmerge
-%{_bindir}/ziptorrent
+%{_bindir}/ziptool
 %{_mandir}/man1/zipcmp.1*
 %{_mandir}/man1/zipmerge.1*
-%{_mandir}/man1/ziptorrent.1*
+%{_mandir}/man1/ziptool.1*
 
 %files -n %{libname}
 %{_libdir}/libzip.so.%{major}*
 
 %files -n %{devname}
-%doc AUTHORS NEWS README THANKS TODO
+%doc AUTHORS THANKS
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libzip.pc
