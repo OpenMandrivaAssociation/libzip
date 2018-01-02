@@ -4,17 +4,14 @@
 
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
-Version:	1.3.2
+Version:	1.4.0
 Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://libzip.org/
 Source0:	https://libzip.org/download/%{name}-%{version}.tar.xz
-#Patch0:		libzip-0.10-fix_pkgconfig.patch
-Patch0:		libzip-1.3.2-headers.patch
-#Patch1:		libzip-0.10_rc1-fix_headers.patch
-#Patch2:		libzip-0.10-php.patch
-BuildRequires:	libtool
+Patch0:		libzip-1.4.0-libdir.patch
+BuildRequires:	cmake ninja
 BuildRequires:	pkgconfig(zlib)
 
 %description
@@ -46,15 +43,15 @@ This package contains the development files for %{name}.
 %prep
 %setup -q
 %apply_patches
-autoreconf -fi
 
 %build
 %global optflags %{optflags} -Ofast
-%configure
-%make
+sed -i -e 's,@LIB@,%{_lib},g' CMakeLists.txt */CMakeLists.txt
+%cmake -G Ninja
+%ninja
 
 %install
-INSTALL_HEADER=%{_includedir} %makeinstall_std
+%ninja_install -C build
 
 %files
 %{_bindir}/zipcmp
