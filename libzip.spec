@@ -10,7 +10,8 @@ Group:		System/Libraries
 License:	BSD
 Url:		https://libzip.org/
 Source0:	https://libzip.org/download/%{name}-%{version}.tar.xz
-BuildRequires:	cmake ninja
+BuildRequires:	cmake
+BuildRequires:	ninja
 BuildRequires:	pkgconfig(zlib)
 
 %description
@@ -19,24 +20,24 @@ can be added from data buffers, files, or compressed data copied directly from
 other zip archives. Changes made without closing the archive can be reverted.
 The API is documented by man pages.
 
-%package -n	%{libname}
+%package -n %{libname}
 Summary:	A C library for reading, creating, and modifying zip archives
-Group:          System/Libraries
+Group:		System/Libraries
 
-%description -n	%{libname}
+%description -n %{libname}
 libzip is a C library for reading, creating, and modifying zip archives. Files
 can be added from data buffers, files, or compressed data copied directly from
 other zip archives. Changes made without closing the archive can be reverted.
 The API is documented by man pages.
 
-%package -n	%{devname}
+%package -n %{devname}
 Summary:	Development library and header files for the %{name} library
 Group:		Development/C
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
-%description -n	%{devname}
+%description -n %{devname}
 This package contains the development files for %{name}.
 
 %prep
@@ -68,4 +69,3 @@ sed -i -e 's,@LIB@,%{_lib},g' CMakeLists.txt */CMakeLists.txt
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libzip.pc
 %{_mandir}/man3/*
-
