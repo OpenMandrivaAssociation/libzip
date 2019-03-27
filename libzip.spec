@@ -5,7 +5,7 @@
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
 Version:	1.5.2
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	BSD
 Url:		https://libzip.org/
@@ -44,7 +44,7 @@ This package contains the development files for %{name}.
 %autosetup -p1
 
 %build
-%global optflags %{optflags} -Ofast
+%global optflags %{optflags} -O3
 sed -i -e 's,@LIB@,%{_lib},g' CMakeLists.txt */CMakeLists.txt
 %cmake -G Ninja
 %ninja
