@@ -4,7 +4,7 @@
 
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
-Version:	1.6.0
+Version:	1.6.1
 Release:	1
 Group:		System/Libraries
 License:	BSD
