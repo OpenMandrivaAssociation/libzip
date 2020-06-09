@@ -4,7 +4,7 @@
 
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
-Version:	1.6.1
+Version:	1.7.0
 Release:	1
 Group:		System/Libraries
 License:	BSD
@@ -69,3 +69,4 @@ sed -i -e 's,@LIB@,%{_lib},g' CMakeLists.txt */CMakeLists.txt
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libzip.pc
 %{_mandir}/man3/*
+%{_libdir}/cmake/%{name}/libzip-*.cmake
