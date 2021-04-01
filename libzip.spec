@@ -1,3 +1,6 @@
+# (tpg) reduce bloat by excluding cmake requires on devel packages
+%global __requires_exclude ^cmake.*$
+
 %define	major 5
 %define libname %mklibname zip %{major}
 %define devname %mklibname zip -d
@@ -5,7 +8,7 @@
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
 Version:	1.7.3
-Release:	2
+Release:	3
 Group:		System/Libraries
 License:	BSD
 Url:		https://libzip.org/
