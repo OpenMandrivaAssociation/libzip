@@ -16,6 +16,10 @@ Source0:	https://libzip.org/download/%{name}-%{version}.tar.xz
 Patch0:		libzip-1.7.3-multi-compilers.patch
 BuildRequires:	cmake
 BuildRequires:	ninja
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:	pkgconfig(zlib)
 
 %description
