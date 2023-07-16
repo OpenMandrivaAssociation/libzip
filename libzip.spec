@@ -7,8 +7,8 @@
 
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
-Version:	1.9.2
-Release:	2
+Version:	1.10.0
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://libzip.org/
