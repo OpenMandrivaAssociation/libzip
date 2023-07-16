@@ -78,3 +78,4 @@ sed -i -e 's,@LIB@,%{_lib},g' CMakeLists.txt */CMakeLists.txt
 %{_libdir}/pkgconfig/libzip.pc
 %{_mandir}/man3/*
 %{_libdir}/cmake/%{name}/libzip-*.cmake
+%{_libdir}/cmake/libzip/modules/
