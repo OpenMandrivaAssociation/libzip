@@ -7,13 +7,12 @@
 
 Summary:	A C library for reading, creating, and modifying zip archives
 Name:		libzip
-Version:	1.12
+Version:	1.12.1
 Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://libzip.org/
 Source0:	https://libzip.org/download/%{name}-%{version}.tar.xz
-Patch0:		libzip-1.7.3-multi-compilers.patch
 BuildRequires:		cmake
 BuildRequires:		ninja
 BuildRequires:		pkgconfig(bzip2)
